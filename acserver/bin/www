@@ -1,0 +1,45 @@
+#!/usr/bin/env node
+var debug = require('debug')('server');
+var app = require('../app');
+
+app.set('port', process.env.PORT || 3000);
+
+var server = app.listen(app.get('port'), function() {
+  debug('Express server listening on port ' + server.address().port);
+});
+
+var io = require("socket.io").listen(server);
+
+io.on("connection", function(socket){
+  console.log("Client connection ready");
+  socket.on("stateChanged", function(value){
+    console.log("New temperature setting: " + value);
+    io.emit("updateState", value);
+  });
+});
+
+
+io.on("connection", function(socket){
+//  console.log("Sensor connection ready");
+  socket.on("tempUpdate", function(tempSend){
+    if (tempSend != null) {
+    console.log("Received temp " + tempSend + " F from sensor");
+    }
+    io.emit("tempUpdate", tempSend);
+  });
+});
+
+
+io.on("connection", function(socket){
+  socket.on("onClicked", function(){
+    console.log("On clicked");
+      io.emit("onButton");
+  });
+});
+
+io.on("connection", function(socket){
+  socket.on("offClicked", function(){
+    console.log("Off clicked");
+      io.emit("offButton");
+  });
+});
