@@ -1,4 +1,9 @@
 /*
+ * Framework of stylesheet credited to Kevin Sidwar - https://github.com/sidwarkd
+ * Slider and button styling credited to W3schools
+ */
+
+/*
  * Globals
  */
 
@@ -185,9 +190,9 @@ body {
 }
 
 .switch input {
-  top: 0; 
-  right: 0; 
-  bottom: 0; 
+  top: 0;
+  right: 0;
+  bottom: 0;
   left: 0;
   -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   filter: alpha(opacity=0);
@@ -324,7 +329,7 @@ body {
   content: "on";
   right: 115%;
   color: #82a06a;
-  text-shadow: 
+  text-shadow:
     0 1px 0 #afcb9b,
     0 -1px 0 #6b8659;
 }
@@ -392,7 +397,7 @@ body {
   color: black;
 }
 
-.off {      
+.off {
   background-color: black;
   color: white;
   border: 2px solid #DC143C;
@@ -402,4 +407,3 @@ body {
   background-color: #DC143C;
   color: black;
 }
-

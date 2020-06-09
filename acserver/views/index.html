@@ -1,5 +1,8 @@
 
 <!DOCTYPE html>
+
+<!-- Framework of HTML credited to Kevin Sidwar - https://github.com/sidwarkd -->
+<!-- Additional scripts and examples credited to W3schools slider and button tutorials -->
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -44,10 +47,12 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-    <script src="/socket.io/socket.io.js"></script>  <!-- Begin socket.io scripts -->
+    <script src="/socket.io/socket.io.js"></script>
+
+    <!-- Begin socket.io scripts -->
     <script type="text/javascript">  <!-- Socket.io I/O scripts -->
     var socket = io.connect('/');
-    
+
     $("#temprange").change(function(){
       socket.emit("stateChanged", this.value);
     });
@@ -57,14 +62,16 @@
     }
     function offButton() {
       socket.emit("offClicked");
-    }   
+    }
     socket.on("tempUpdate", function(data){
       if (data != null){
       document.getElementById("tempNow").innerHTML = data + "°F";
       }
     });
     </script>
-    <script>      <!-- Slider script -->
+    <script>
+
+    <!-- Slider script -->
     var slider = document.getElementById("temprange");
     var output = document.getElementById("desiredtemp");
     output.innerHTML = slider.value;

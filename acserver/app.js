@@ -1,10 +1,12 @@
+//Framework of app credited to Kevin Sidwar - https://github.com/sidwarkd
+//Basic edits have been made to include most up to date packages
+
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
 var routes = require('./routes/index');
 
 var app = express();
