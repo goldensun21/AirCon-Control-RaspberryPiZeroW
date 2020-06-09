@@ -8,17 +8,19 @@ This code has just been finished and still needs some TLC and cleanup. Basic fun
 Code sources and tutorials I used can be found at the following links:
 
 Huge credit to sidwarkd on GitHub/Kevin on YouTube
-https://github.com/sidwarkd/microcast_episode_17
-https://www.youtube.com/watch?v=z3O26CC9nAc&t=321s
+
+  https://github.com/sidwarkd/microcast_episode_17
+  https://www.youtube.com/watch?v=z3O26CC9nAc&t=321s
 
 Used DS18B20 Temperature Sensor and 1 wire with the following RPi packages:
-https://www.npmjs.com/package/rpi-gpio
-https://www.npmjs.com/package/ds18b20-raspi
+
+  https://www.npmjs.com/package/rpi-gpio
+  https://www.npmjs.com/package/ds18b20-raspi
 
 Used express server for web server configuration
-https://www.npmjs.com/package/express
+  https://www.npmjs.com/package/express
 
 Used socket.io for websocket functionality
-https://socket.io/
+  https://socket.io/
 
 Other node modules used in this project can be found in the "node_modules" directory and package-lock.json file
