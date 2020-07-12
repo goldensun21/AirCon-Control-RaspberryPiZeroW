@@ -1,9 +1,4 @@
 /*
- * Framework of stylesheet credited to Kevin Sidwar - https://github.com/sidwarkd
- * Slider and button styling credited to W3schools
- */
-
-/*
  * Globals
  */
 
@@ -32,23 +27,34 @@ a:hover {
 html,
 body {
   height: 100%;
-  background-color: #333;
+  background-color: #000;
 }
 body {
   color: #fff;
   text-align: center;
-  text-shadow: 0 1px 3px rgba(0,0,0,.5);
-  box-shadow: inset 0 0 100px rgba(0,0,0,.5);
 }
 
 /* Extra markup and styles for table-esque vertical and horizontal centering */
 .site-wrapper {
   display: table;
+  vertical-alight: top;
   width: 100%;
   height: 100%; /* For at least Firefox */
   min-height: 100%;
 }
+.topbar{
+/*  overflow: hidden; */
+  background-color: #5FA2B7;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 40px;
+  padding: 9px 10px;
+  color: #000;
+}
 .site-wrapper-inner {
+  padding-top: 90px;
   display: table-cell;
   vertical-align: top;
 }
@@ -62,6 +68,13 @@ body {
   padding: 30px;
 }
 
+.temperaturenow{
+  color: #5FA2B7;
+  font-size: 60px;
+}
+.currentdesired{
+  color: #5FA2B7;
+}
 
 /*
  * Header
@@ -190,9 +203,9 @@ body {
 }
 
 .switch input {
-  top: 0;
-  right: 0;
-  bottom: 0;
+  top: 0; 
+  right: 0; 
+  bottom: 0; 
   left: 0;
   -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   filter: alpha(opacity=0);
@@ -329,7 +342,7 @@ body {
   content: "on";
   right: 115%;
   color: #82a06a;
-  text-shadow:
+  text-shadow: 
     0 1px 0 #afcb9b,
     0 -1px 0 #6b8659;
 }
@@ -363,14 +376,14 @@ body {
   appearance: none;
   width: 25px; /* Set a specific slider handle width */
   height: 25px; /* Slider handle height */
-  background: #4CAF50; /* Green background */
+  background: #5FA2B7; /* Blue background */
   cursor: pointer; /* Cursor on hover */
 }
 
 .slider::-moz-range-thumb {
   width: 25px; /* Set a specific slider handle width */
   height: 25px; /* Slider handle height */
-  background: #4CAF50; /* Green background */
+  background: #5FA2B7; /* Blue background */
   cursor: pointer; /* Cursor on hover */
 }
 
@@ -386,24 +399,108 @@ body {
   cursor: pointer;
 }
 
+.plus {
+  background-color: black;
+  color: white;
+  border: 2px solid #d3d3d3;
+}
+
+.plus:hover {
+  background-color: #d3d3d3;
+  color: black;
+}
+
+.minus {      
+  background-color: black;
+  color: white;
+  border: 2px solid #d3d3d3;
+}
+
+.minus:hover {
+  background-color: #d3d3d3;
+  color: black;
+}
+
 .on {
   background-color: black;
   color: white;
-  border: 2px solid #4CAF50;
+  border: 2px solid #5FA2B7;
 }
 
 .on:hover {
-  background-color: #4CAF50;
+  background-color: #5FA2B7;
   color: black;
 }
 
-.off {
+.off {      
   background-color: black;
   color: white;
-  border: 2px solid #DC143C;
+  border: 2px solid #d3d3d3;
 }
 
 .off:hover {
-  background-color: #DC143C;
+  background-color: #d3d3d3;
   color: black;
+}
+
+input,
+textarea {
+  border: 1px solid #eeeeee;
+  box-sizing: border-box;
+  margin: 0;
+  outline: none;
+  padding: 10px;
+}
+
+input[type="button"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.input-group {
+  clear: both;
+  margin: 15px 0;
+  position: relative;
+}
+
+.input-group input[type='button'] {
+  background-color: #eeeeee;
+  min-width: 38px;
+  width: auto;
+  transition: all 300ms ease;
+}
+
+.input-group .button-minus,
+.input-group .button-plus {
+  font-weight: bold;
+  height: 38px;
+  padding: 0;
+  width: 38px;
+  position: relative;
+}
+
+.input-group .quantity-field {
+  position: relative;
+  height: 38px;
+  left: -6px;
+  text-align: center;
+  width: 62px;
+  display: inline-block;
+  font-size: 13px;
+  margin: 0 0 5px;
+  resize: vertical;
+}
+
+.button-plus {
+  left: -13px;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+  -webkit-appearance: none;
 }

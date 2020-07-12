@@ -12,14 +12,24 @@ var io = require("socket.io").listen(server);
 
 io.on("connection", function(socket){
   console.log("Client connection ready");
-  socket.on("stateChanged", function(value){
-    console.log("New temperature setting: " + value);
-    io.emit("updateState", value);
+    io.emit("newWebClient");
+});
+
+io.on("connection", function(socket){
+  socket.on("newDesired", function(displayDesired){
+    console.log("Desired temp is now " + displayDesired + " F");
+      io.emit("desired", displayDesired);
   });
 });
 
 io.on("connection", function(socket){
-//  console.log("Sensor connection ready");
+  socket.on("updateState", function(displayState){
+    console.log("Current state is now " + displayState);
+      io.emit("state", displayState);
+  });
+});
+
+io.on("connection", function(socket){
   socket.on("tempUpdate", function(tempSend){
     if (tempSend != null) {
     console.log("Received temp " + tempSend + " F from sensor");
@@ -27,6 +37,7 @@ io.on("connection", function(socket){
     io.emit("tempUpdate", tempSend);
   });
 });
+
 
 io.on("connection", function(socket){
   socket.on("onClicked", function(){
@@ -39,5 +50,19 @@ io.on("connection", function(socket){
   socket.on("offClicked", function(){
     console.log("Off clicked");
       io.emit("offButton");
+  });
+});
+
+io.on("connection", function(socket){
+  socket.on("plusClicked", function(){
+    console.log("Temperature incremented up");
+      io.emit("plusButton");
+  });
+});
+
+io.on("connection", function(socket){
+  socket.on("minusClicked", function(){
+    console.log("temperature incremented down");
+      io.emit("minusButton");
   });
 });

@@ -1,8 +1,5 @@
 
 <!DOCTYPE html>
-
-<!-- Framework of HTML credited to Kevin Sidwar - https://github.com/sidwarkd -->
-<!-- Additional scripts and examples credited to W3schools slider and button tutorials -->
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -20,19 +17,27 @@
     <!-- Custom styles for this template -->
     <link href="/stylesheets/style.css" rel="stylesheet">
 
+    <!-- iOS icon -->
+    <link rel="apple-touch-icon" href="/images/iosicon.png">
+
   </head>
 
   <body>
 
   <div class="site-wrapper">
+    <div class="topbar">A/C Control</div>
     <div class="site-wrapper-inner">
       <div class="cover-container">
         <div class="inner cover">
-          <h1 class="cover-heading">A/C Control</h1>
-          <h2 class="temperaturenow" style="color: #4CAF50;" <span id="tempNow"></span></h2>
-          <br><h4>Desired Temperature: <span style="color: #4CAF50;" id="desiredtemp"></span><span style="color: #4CAF50;">°F</span></h4><br>
-            <div class="slidecontainer">
-              <input type="range" min="66" max="90" class="slider" id="temprange"><br><br>
+          <div class="cover-heading">
+          <span class="temperaturenow" <span id="tempNow"></span></span>
+          <br>
+          <h4>Desired Temperature: <span class="currentdesired" <span id="desiredtemp"></span></span></h4>
+          <br>
+              <button class="button minus" type="button" onclick="minusButton()">-</button>
+              <button class="button plus" type="button" onclick="plusButton()">+</button>
+              <br>
+              <h5>Currently <span class="currentdesired" <span id="printstate"></span></span></h5>
               <button class="button on" type="button" onclick="onButton()">On</button>
               <button class="button off" type="button" onclick="offButton()">Off</button>
             </div>
@@ -47,39 +52,37 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-    <script src="/socket.io/socket.io.js"></script>
-
-    <!-- Begin socket.io scripts -->
+    <script src="/socket.io/socket.io.js"></script>  <!-- Begin socket.io scripts -->
     <script type="text/javascript">  <!-- Socket.io I/O scripts -->
     var socket = io.connect('/');
-
-    $("#temprange").change(function(){
-      socket.emit("stateChanged", this.value);
-    });
-    $
+    
     function onButton() {
       socket.emit("onClicked");
     }
     function offButton() {
       socket.emit("offClicked");
     }
+    function plusButton() {
+      socket.emit("plusClicked");
+    }
+    function minusButton() {
+      socket.emit("minusClicked");
+    }
+    socket.on("state", function(currentstate){
+      if (currentstate == 1) {
+        document.getElementById("printstate").innerHTML = "On";
+      } else {
+        document.getElementById("printstate").innerHTML = "Off";
+      }
+    });
+    socket.on("desired", function(desiredData){
+      document.getElementById("desiredtemp").innerHTML = desiredData + "°";
+    });
     socket.on("tempUpdate", function(data){
       if (data != null){
-      document.getElementById("tempNow").innerHTML = data + "°F";
+      document.getElementById("tempNow").innerHTML = data + "°";
       }
     });
     </script>
-    <script>
-
-    <!-- Slider script -->
-    var slider = document.getElementById("temprange");
-    var output = document.getElementById("desiredtemp");
-    output.innerHTML = slider.value;
-
-    slider.oninput = function() {
-      output.innerHTML = this.value;
-    }
-    </script>
-
   </body>
 </html>

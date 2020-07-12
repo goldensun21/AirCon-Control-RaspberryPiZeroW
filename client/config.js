@@ -1,8 +1,8 @@
 var config = {}
 
 // Change this to the physical pin number to which you connected 
-// the LED
-config.led = 12;
+// the relay
+config.relay = 12;
 //config.temp = 7;
 
 // Enter the path to your express server. For example if running
@@ -11,8 +11,8 @@ config.led = 12;
 // the machine running the server code.
 config.server_url = "http://localhost:3000";
 
-if(config.led == -1 || config.server_url == ""){
-  console.log("Before running app.js you must configure the LED pin number and server url in ./config.js");
+if(config.relay == -1 || config.server_url == ""){
+  console.log("Before running app.js you must configure the relay pin number and server url in ./config.js");
   process.exit(-1);
 }
 
