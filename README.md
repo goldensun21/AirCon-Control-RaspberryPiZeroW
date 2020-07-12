@@ -28,3 +28,8 @@ Used socket.io for websocket functionality
   https://socket.io/
 
 Other node modules used in this project can be found in the "node_modules" directory and package-lock.json file
+
+
+Screenshot of homepage:
+
+![Alt text](/index.png?raw=true "homepage")
